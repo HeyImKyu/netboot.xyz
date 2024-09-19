@@ -1,27 +1,24 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu
+### netboot.xyz-custom menu example
 ###
 
 :custom
-menu HeyImKyuMenu
-item dban ${space} DBAN
-choose --default ${menu} menu || goto custom_exit
+clear custom_choice
+menu HeyImKyu's Menu
+item --gap Utils
+item DBAN ${space} DBAN
+choose custom_choice || goto custom_exit
 echo ${cls}
-goto ${menu} ||
-chain ${menu}.ipxe || goto custom_exit
+goto ${custom_choice}
 goto custom_exit
 
-:start
-echo Hello world!
-sleep 10
-goto custom_exit
-
-:dban
+:DBAN
 set version 2.3.0
-kernel ${memdisk} iso raw
+kernel https://boot.netboot.xyz/memdisk raw iso
 initrd http://sourceforge.net/projects/dban/files/dban/dban-${version}/dban-${version}_i586.iso/download
 boot || goto custom_exit
 
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
