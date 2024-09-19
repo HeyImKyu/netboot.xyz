@@ -3,10 +3,24 @@
 ### netboot.xyz-custom menu
 ###
 
+menu HeyImKyuMenu
+item dban ${space} DBAN
+choose --default ${menu} menu || goto custom_exit
+echo ${cls}
+goto ${menu} ||
+chain ${menu}.ipxe || goto custom_exit
+goto custom_exit
+
 :start
 echo Hello world!
 sleep 10
 goto custom_exit
+
+:dban
+set version 2.3.0
+kernel ${memdisk} iso raw
+initrd http://sourceforge.net/projects/dban/files/dban/dban-${version}/dban-${version}_i586.iso/download
+boot || goto custom_exit
 
 :custom_exit
 exit 0
