@@ -3,6 +3,7 @@
 ### netboot.xyz-custom menu
 ###
 
+:custom
 menu HeyImKyuMenu
 item dban ${space} DBAN
 choose --default ${menu} menu || goto custom_exit
