@@ -8,7 +8,6 @@ clear custom_choice
 menu HeyImKyu's Menu
 item --gap Utils
 item dban ${space} DBAN
-item option_two ${space} Loading an ISO
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -19,11 +18,5 @@ kernel https://boot.netboot.xyz/memdisk raw iso
 initrd https://unlimited.dl.sourceforge.net/project/dban/dban/dban-2.3.0/dban-2.3.0_i586.iso?viasf=1
 boot || goto custom_exit
 
-:option_two
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://path.to/iso
-boot || goto custom_exit
-
 :custom_exit
-chain utils.ipxe
 exit
