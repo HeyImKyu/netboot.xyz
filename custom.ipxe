@@ -7,13 +7,13 @@
 clear custom_choice
 menu HeyImKyu's Menu
 item --gap Utils
-item DBAN ${space} DBAN
+item dban ${space} DBAN
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
-:DBAN
+:dban
 set version 2.3.0
 kernel https://boot.netboot.xyz/memdisk raw iso
 initrd http://sourceforge.net/projects/dban/files/dban/dban-${version}/dban-${version}_i586.iso/download
