@@ -8,15 +8,20 @@ clear custom_choice
 menu HeyImKyu's Menu
 item --gap Utils
 item dban ${space} DBAN
+item option_two ${space} Loading an ISO
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
 :dban
-set version 2.3.0
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://sourceforge.net/projects/dban/files/dban/dban-${version}/dban-${version}_i586.iso/download
+initrd http://sourceforge.net/projects/dban/files/dban/dban-2.3.0/dban-2.3.0_i586.iso/download
+boot || goto custom_exit
+
+:option_two
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://path.to/iso
 boot || goto custom_exit
 
 :custom_exit
